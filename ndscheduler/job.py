@@ -97,9 +97,9 @@ class JobBase:
                                        hostname=socket.gethostname(), pid=os.getpid(),
                                        description=cls.get_running_description())
             job = cls(job_id, execution_id)
-            job.run(*args, **kwargs)
+            output = job.run(*args, **kwargs)
             datastore.update_execution(execution_id, state=constants.EXECUTION_STATUS_SUCCEEDED,
-                                       description=cls.get_succeeded_description())
+                                       description=output)
         except Exception as e:
             logger.exception(e)
             datastore.update_execution(execution_id,

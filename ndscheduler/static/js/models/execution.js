@@ -105,7 +105,7 @@ define(['config',
           encodeURI(this.get('description')) +
           '" data-action="show-full-stacktrace">Full Stacktrace</a></span>');
       } else {
-        return this.get('description');
+        return '<pre>' + this.get('description') + '</pre>';
       }
     }
   });
